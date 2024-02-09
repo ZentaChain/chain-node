@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  #Geth
+  geth:
+    build: .
+    ports:
+      - 8545:8545
+      - 8546:8546
+      - 30303:30303
+      - 30303:30303/udp
+      - 7301:6060
+    command: ["bash", "./geth-entrypoint"]
+    volumes:
+      - ${GETH_HOST_DATA_DIR}:/data
+    env_file:
+      # select env network:
+      - .env.sepolia
+  # Node
+  node:
+    build: .
+    depends_on:
+      - geth
+    ports:
+      - 7545:8545
+      - 9222:9222
+      - 9222:9222/udp
+      - 7300:7300
+      - 6060:6060
+    command: ["bash", "./op-node-entrypoint"]
+    env_file:
+      # select network:
+      - .env.sepolia
