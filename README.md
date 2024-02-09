@@ -1,11 +1,22 @@
-# Chain Network Node
+# Chain Network Node Setup
 
-### Hardware Requirements
+This document provides the necessary information to set up and run a Chain Network Node, including hardware requirements and support for various Ethereum networks.
 
-We recommend you have this configuration to run a node:
+## Hardware Requirements
 
-- Min: 16 GB RAM
-- Min: 2 TB SSD Space
+To ensure optimal performance of your Chain Network Node, the following hardware configuration is recommended:
+
+- **RAM**: Minimum of 16 GB
+- **Storage**: Minimum of 2 TB SSD space
+
+## Launching Node & Geth
+
+To launch and start the Sepolia Chain Network node, use the following command:
+
+```shell
+docker compose up --build
+```
+This command initializes the Docker containers required for running the node, based on the configurations defined in docker-compose.yml file.
 
 ### Supported Networks
 
